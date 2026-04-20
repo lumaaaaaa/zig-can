@@ -45,3 +45,7 @@ pub fn main(init: std.process.Init) !void {
   // do something with the frame
 }
 ```
+
+## Example
+
+An example usage of this library is a barebones `candump` implementation, [zcandump](https://github.com/lumaaaaaa/zcandump).
