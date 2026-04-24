@@ -2,6 +2,8 @@
 
 A minimal Linux SocketCAN raw socket wrapper for Zig.
 
+The `main` branch will attempt to maintain compatibility with the latest release of Zig. As of 04/24/2026, this is Zig 0.16.0.
+
 ## Usage
 
 1. Add `can` to your `build.zig.zon`:
