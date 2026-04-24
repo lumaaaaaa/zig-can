@@ -50,4 +50,4 @@ pub fn main(init: std.process.Init) !void {
 
 ## Example
 
-An example usage of this library is a barebones `candump` implementation, [zcandump](https://github.com/lumaaaaaa/zcandump).
+Check out [zcandump](https://github.com/lumaaaaaa/zcandump) and [zcangen](https://github.com/lumaaaaaa/zcangen), minimal reimplementations of the CLI tools `candump` and `cangen` respectively.
