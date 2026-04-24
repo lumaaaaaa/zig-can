@@ -31,9 +31,9 @@ pub const sockaddr_can = extern struct {
 pub const Frame = extern struct {
     can_id: u32,
     len: u8, // this is also known as DLC (legacy)
-    pad: u8,
-    reserved: u8, // also padding
-    len8_dlc: u8,
+    pad: u8 = 0x00,
+    reserved: u8 = 0x00, // also padding
+    len8_dlc: u8 = 0x00, // optional DLC element
     data: [CAN_MAX_DLEN]u8,
 };
 
@@ -87,5 +87,18 @@ pub const Socket = struct {
         }
 
         if (status < @sizeOf(Frame)) return error.IncompleteRead;
+    }
+
+    // Sends a single CAN frame to the socket.
+    pub fn sendFrame(self: Socket, frame: *const Frame) !void {
+        const status = linux.write(self.fd, @ptrCast(frame), @sizeOf(Frame));
+        switch (linux.errno(status)) {
+            .SUCCESS => {},
+            .BADF => return error.BadFd,
+            .INTR => return error.Interrupted,
+            else => return error.WriteFailed,
+        }
+
+        if (status < @sizeOf(Frame)) return error.IncompleteWrite;
     }
 };

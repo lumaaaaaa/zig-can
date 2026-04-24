@@ -2,8 +2,6 @@
 
 A minimal Linux SocketCAN raw socket wrapper for Zig.
 
-In development, read-only at the moment.
-
 ## Usage
 
 1. Add `can` to your `build.zig.zon`:
@@ -43,6 +41,8 @@ pub fn main(init: std.process.Init) !void {
   try can_sock.readFrame(&frame);
 
   // do something with the frame
+  frame.can_id = 0x123;
+  try can_sock.sendFrame(&frame);
 }
 ```
 
