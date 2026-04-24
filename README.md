@@ -7,7 +7,7 @@ A minimal Linux SocketCAN raw socket wrapper for Zig.
 1. Add `can` to your `build.zig.zon`:
 
 ```sh
-zig fetch --save "git+https://github.com/lumaaaaaa/zig-can#master"
+zig fetch --save "git+https://github.com/lumaaaaaa/zig-can#main"
 ```
 
 2. Use the `can` module. In `build.zig`'s `build()`, add the dependency and import the module:
